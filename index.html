@@ -1,0 +1,76 @@
+
+Untitled
+Code
+Preview
+index.html
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script data-require="moment.js@2.10.2" data-semver="2.10.2" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+    <link data-require="bootstrap-css@3.3.1" data-semver="3.3.1" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<style>
+    .row {
+        margin-bottom: 10px;
+    }
+
+    .container {
+        margin-top: 10px;
+    }
+
+    .glyphicon {
+        cursor: pointer;
+    }
+</style>
+<body ng-app="app">
+
+<div class="container" ng-controller="businessScheduleController">
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-md-6"><b>Day Times</b></div>
+            </div>
+            <div class="row" ng-repeat="rowIndex in timeSpanRows track by rowIndex">
+                <div class="col-md-7" style="margin-top:5px;">Time Span {{ rowIndex }}</div>
+                <div class="row" style="height:45px; margin-top:5px">Start Time</div>
+                <div class="row col-md-offset-7" style="margin-top:-5px">End Time</div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="col-md-3" ng-repeat="day in weekDays">
+                <div class="row">
+                    <b>{{day.day}} - ({{day.totalHours()}} hours)</b>
+                </div>
+                <div ng-repeat='timeSlot in day.timeSlots track by timeSlot.timeSlotIndex'>
+                    <div class="row">
+                        <div class="col-md-5" style="padding-top:5px;">{{ timeSlot.start.time.format('h a') }}</div>
+                        <div class="col-md-2">
+                            <span class="glyphicon glyphicon-chevron-up" aria-hidden="true" ng-click="timeSlot.start.increment(day.day, $index)"></span>
+                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true" ng-click="timeSlot.start.decrement(day.day, $index)"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5" style="padding-top:5px;">{{ timeSlot.end.time.format('h a') }}</div>
+                        <div class="col-md-2">
+                            <span class="glyphicon glyphicon-chevron-up" aria-hidden="true" ng-click="timeSlot.end.increment(day.day, $index)"></span>
+                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true" ng-click="timeSlot.end.decrement(day.day, $index)"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button ng-click="addNewLine()" class="btn btn-default btn-primary">
+        Add new line
+    </button>
+</div>
+</body>
+</html>
+
+                
