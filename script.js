@@ -1,9 +1,3 @@
-
-Untitled
-Code
-Preview
-script.js
-
 var app = angular.module('app', []);
 
 app.controller('businessScheduleController', function($scope) {
@@ -37,7 +31,7 @@ app.controller('businessScheduleController', function($scope) {
 
     function initWeekDays() {
         var weekDays = [];
-        var days = ['Monday', 'Tuesday', 'Wednesday'];
+        var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday'];
         for(var i=0; i< days.length; i++) {
             weekDays.push({
                 day: days[i],
