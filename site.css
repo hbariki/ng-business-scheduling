@@ -1,3 +1,15 @@
+.row {
+    margin-bottom: 10px;
+}
+
+.container {
+    margin-top: 10px;
+}
+
+.glyphicon {
+    cursor: pointer;
+}
+
 .container {
     width: 950px;
 }
